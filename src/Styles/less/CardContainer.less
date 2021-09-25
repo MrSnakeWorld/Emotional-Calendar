@@ -1,0 +1,41 @@
+@container-height: 38vh;
+@min-container-height: 10vh;
+@container-width: 90vw;
+
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+.card__container {
+  text-align: center;
+  border: solid 1px black;
+  border-radius: 10px;
+  width: @container-width;
+  min-height: @min-container-height;
+  margin: 20px auto 0px auto;
+  
+  .card__elem {
+    border: 1px black solid;
+    border-radius: 10px;
+    width: 80%;
+    padding: 15px 0px 13px 0px;
+    margin: 0px auto 20px auto;
+    
+    .card__event {
+      padding: 5px;
+      width: 85%;
+    }
+    .card__thougth {
+      overflow: hidden;
+      padding: 5px;
+      width: 85%;
+      position: relative;
+      height: 100px;
+    }
+    button {
+      border-radius: 15px;
+    }
+  }
+}
+
+
+

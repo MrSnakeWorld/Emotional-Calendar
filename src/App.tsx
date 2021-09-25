@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './Styles/css/Calendar.css'
+import './Styles/css/App.css'
+import './Styles/css/Slider.css'
+import Main from './Main'
+import Analitics from './Analitics'
+import Carousel from './Components/Carousel'
+import ModalMenu from './Components/ModalMenu'
+import SideMenu from './Components/SideMenu'
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id='app' className='app slider'>
+      <ModalMenu>
+        <h2>Выбор эмоции:</h2>
+        <p>Потом это добавлю</p>
+      </ModalMenu>
+      <SideMenu >
+        <h1>Заголовок</h1>
+        <p>Текст</p>
+      </SideMenu>
+      <Carousel show={1} withIndicator>
+        <span data-testid='carousel-item-1'>
+          <main>
+            <Main />
+          </main>
+        </span>
+        <span data-testid='carousel-item-2'>
+          <Analitics />
+        </span>
+      </Carousel>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
