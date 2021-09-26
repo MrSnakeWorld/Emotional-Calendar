@@ -1,0 +1,21 @@
+.emotions__container {
+  margin: 0px auto 0px;
+  width: fit-content;
+}
+.emotions__container .emotions {
+  width: 75px;
+  height: 75px;
+  display: flexbox;
+  border: 2px solid darkgray;
+  border-radius: 15px;
+  margin: 0px 5px 10px;
+  text-align: center;
+}
+.emotions__container .slider {
+  width: 100%;
+  margin: 25px 0px 25px;
+}
+.emotions__container .submit {
+  padding: 5px;
+}
+/*# sourceMappingURL=Emotions.css.map */
