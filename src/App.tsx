@@ -7,14 +7,14 @@ import Analitics from './Analitics'
 import Carousel from './Components/Carousel'
 import ModalMenu from './Components/ModalMenu'
 import SideMenu from './Components/SideMenu'
-import Emotions from './Components/Emotions'
+import EmotionContainer from './Components/EmotionContainer'
 
 function App() {
 
   return (
     <div id='app' className='app slider'>
       <ModalMenu>
-        <Emotions />
+        <EmotionContainer />
       </ModalMenu>
       <SideMenu >
         <h1>Заголовок</h1>
