@@ -1,8 +1,7 @@
-import { relative } from 'path';
 import React, { useCallback, useState } from 'react'
 import { LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Line } from 'recharts'
 import CardContainer from './Components/CardContainer'
-import { windowInnerHeight, windowInnerWidth } from './constants';
+import { windowInnerHeight, windowInnerWidth } from './Constants';
 
 const data = [
   {

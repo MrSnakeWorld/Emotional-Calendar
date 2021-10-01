@@ -3,7 +3,7 @@ import JournalCard from './JournalCard'
 import '../Styles/css/CardContainer.css'
 import {connect} from 'react-redux'
 
-const mapStateToProps = (state: any) => ([...state.cards])
+const mapStateToProps = (state: any) => ([...state.cards.cards])
 function displayTitle(display: any, state: any) {
   let title;
   if (!display) {
@@ -36,6 +36,7 @@ function CardContainer({ display, ...props }: any) {
             }
 
         })
+        
       }
     </div>
   )

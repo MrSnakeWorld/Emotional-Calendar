@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect, useDispatch } from 'react-redux';
-import { closeModal } from '../Redux/Actions';
+import { clearAllEmotions, closeModal } from '../Redux/Actions';
 import '../Styles/css/ModalMenu.css'
 
 const mapStateToProps = (state: any) => ({ ...state.modal })
@@ -12,6 +12,7 @@ function ModalMenu({ id, contentId, children, ...props }: any) {
       document.getElementById('modal_id')?.classList.remove('_active');
       document.getElementById('modal_content_id')?.classList.remove('_active');
       dispatch(closeModal())
+      dispatch(clearAllEmotions())
     }}>
       <div id='modal_content_id' className={props.modalMenu.active ? 'modal_content _active' : 'modal_content'} onClick={e => e.stopPropagation()}>
         {children}

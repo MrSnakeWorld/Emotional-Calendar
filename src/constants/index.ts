@@ -28,3 +28,7 @@ export const windowHeight: number = window.screen.height
 
 export const windowInnerWidth = document.documentElement.clientWidth
 export const windowInnerHeight = document.documentElement.clientHeight
+
+export const typeOfEmotions: string[] = ['joy', 'sadness', 'void']
+
+export const url = 'http://26.213.25.20:65503/api/'

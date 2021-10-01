@@ -1,4 +1,4 @@
-const initialState = {
+  const initialState = {
   modalMenu: {
     active: false
   },
@@ -8,6 +8,7 @@ const initialState = {
 }
 
 export const reducerModal = (state: any = initialState, action: any): any => {
+
   switch (action.type) {
     case 'OPEN_MODAL':
       return {
@@ -19,6 +20,7 @@ export const reducerModal = (state: any = initialState, action: any): any => {
         }
       }
     case 'CLOSE_MODAL':
+      
       return {
         modalMenu: {
           active: false

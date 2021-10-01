@@ -23,12 +23,29 @@
   text-shadow: 1px 1px 2px black ;
   padding: 0px;
 }
+.emotion__container .emotion__group._activeSlider {
+  margin-bottom: 40px;
+}
 .emotion__container .slider {
-  margin: 25px 0px 25px;
-  width: 100%;
+  margin: 25px auto 25px;
+  width: 90%;
   box-sizing: border-box;
+  bottom: 10%;
+  left: 5%;
+  position: fixed;
+  transition: 0.4s all;
+  transform: scale(0);
+}
+.emotion__container .slider._active {
+  transform: scale(1);
 }
 .emotion__container .submit {
   padding: 5px;
+}
+.emotion__container .miniEmotion {
+  max-width: 50px;
+  max-height: 50px;
+  border: 1px solid;
+  border-radius: 100%;
 }
 /*# sourceMappingURL=Emotions.css.map */

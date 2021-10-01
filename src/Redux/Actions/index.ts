@@ -1,16 +1,27 @@
+/*  *///actions for reducerCards
 const ADD_CARD = 'ADD_CARD'
-const CLOSE_MODAL = 'CLOSE_MODAL'
-const OPEN_MODAL = 'OPEN_MODAL' 
-const CLOSE_MENU = 'CLOSE_MENU'
-const OPEN_MENU = 'OPEN_MENU'
-const CHOOSE_EMOTION = 'CHOOSE_EMOTION'
-const CHANGE_OPACITY = 'CHANGE_OPACITY'
+const ADD_EMOTION = 'ADD_EMOTION'
+const CLEAR_CURRENT_EMOTIONS = 'CLEAR_CURRENT_EMOTIONS'
 
 export const addCard = (value: any) => ({
   type: ADD_CARD,
   value
 })
 
+export const addEmotion = (value: any) => ({
+  type: ADD_EMOTION,
+  value
+})
+
+export const clearCurrentEmotion = () => ({
+  type: CLEAR_CURRENT_EMOTIONS
+})
+
+//actions for reducerModal
+const CLOSE_MODAL = 'CLOSE_MODAL'
+const OPEN_MODAL = 'OPEN_MODAL' 
+const CLOSE_MENU = 'CLOSE_MENU'
+const OPEN_MENU = 'OPEN_MENU'
 
 export const closeModal = () => ({
   type: CLOSE_MODAL,
@@ -28,12 +39,29 @@ export const openMenu = () => ({
   type: OPEN_MENU,
 })
 
-export const chooseEmotion = (emotion: any) => ({
+
+//actions for reducerEmotions
+const CHOOSE_EMOTION = 'CHOOSE_EMOTION'
+const CHANGE_OPACITY = 'CHANGE_OPACITY'
+const CLEAR_EMOTION = 'CLEAR_EMOTION'
+const CLEAR_ALL_EMOTIONS = 'CLEAR_ALL_EMOTIONS'
+
+
+export const chooseEmotion = (value: any) => ({
   type: CHOOSE_EMOTION,
-  emotion
+  value
 })
 
-export const changeOpacity = (opacity: number) => ({
+export const changeOpacity = (value: any) => ({
   type: CHANGE_OPACITY,
-  opacity
+  value
+})
+
+export const clearEmotion = (value: any) => ({
+  type: CLEAR_EMOTION,
+  value
+})
+
+export const clearAllEmotions = () => ({
+  type: CLEAR_ALL_EMOTIONS  
 })

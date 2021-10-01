@@ -3,6 +3,7 @@ import { reducerCards } from "../Reducers/reducerCards";
 import { reducerEmotions } from "../Reducers/reducerEmotions";
 import { reducerModal } from "../Reducers/reducerModal";
 
+
 export const rootReducer = combineReducers({
   cards: reducerCards,
   modal: reducerModal,

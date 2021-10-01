@@ -3,7 +3,7 @@ import Calendar from 'react-calendar'
 import { useDispatch } from 'react-redux'
 import { SwipeEventListener } from 'swipe-event-listener'
 import CardContainer from './Components/CardContainer'
-import greetings, { weekDay, day, month, year, hours } from './constants'
+import greetings, { weekDay, day, month, year, hours } from './Constants'
 import { closeMenu, openMenu, openModal } from './Redux/Actions'
 
 function Main() {

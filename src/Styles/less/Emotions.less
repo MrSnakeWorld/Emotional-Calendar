@@ -22,13 +22,30 @@
       text-shadow: 1px 1px 2px black ;
       padding: 0px;
     }
+    &._activeSlider {
+      margin-bottom: 40px;
+    }
   }
   .slider {
-    margin: 25px 0px 25px;
-    width: 100%;
+    margin: 25px auto 25px;
+    width: 90%;
     box-sizing: border-box;
+    bottom: 10%;
+    left: 5%;
+    position: fixed;
+    transition: 0.4s all;
+    transform: scale(0);
+    &._active {
+      transform: scale(1);
+    }
   }
   .submit {
-    padding: 5px
+    padding: 5px;
+  }
+  .miniEmotion {
+    max-width: 50px;
+    max-height: 50px;
+    border: 1px solid;
+    border-radius: 100%;
   }
 }
