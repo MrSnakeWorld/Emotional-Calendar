@@ -1,7 +1,7 @@
-/*  *///actions for reducerCards
+//actions for reducerCards
 const ADD_CARD = 'ADD_CARD'
 const ADD_EMOTION = 'ADD_EMOTION'
-const CLEAR_CURRENT_EMOTIONS = 'CLEAR_CURRENT_EMOTIONS'
+const CLEAR_CURRENT_EMOTION = 'CLEAR_CURRENT_EMOTION'
 
 export const addCard = (value: any) => ({
   type: ADD_CARD,
@@ -14,8 +14,9 @@ export const addEmotion = (value: any) => ({
 })
 
 export const clearCurrentEmotion = () => ({
-  type: CLEAR_CURRENT_EMOTIONS
+  type: CLEAR_CURRENT_EMOTION
 })
+
 
 //actions for reducerModal
 const CLOSE_MODAL = 'CLOSE_MODAL'
@@ -46,7 +47,6 @@ const CHANGE_OPACITY = 'CHANGE_OPACITY'
 const CLEAR_EMOTION = 'CLEAR_EMOTION'
 const CLEAR_ALL_EMOTIONS = 'CLEAR_ALL_EMOTIONS'
 
-
 export const chooseEmotion = (value: any) => ({
   type: CHOOSE_EMOTION,
   value
@@ -65,3 +65,4 @@ export const clearEmotion = (value: any) => ({
 export const clearAllEmotions = () => ({
   type: CLEAR_ALL_EMOTIONS  
 })
+

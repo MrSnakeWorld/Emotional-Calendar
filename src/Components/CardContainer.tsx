@@ -1,7 +1,7 @@
 import React from 'react'
 import JournalCard from './JournalCard'
 import '../Styles/css/CardContainer.css'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
 const mapStateToProps = (state: any) => ([...state.cards.cards])
 function displayTitle(display: any, state: any) {
@@ -17,7 +17,6 @@ function displayTitle(display: any, state: any) {
 }
 
 function CardContainer({ display, ...props }: any) {
-  console.log('Props', Object.values(props).length)
 
   return (
     <div className={`card__container ${display}`} >
@@ -25,9 +24,16 @@ function CardContainer({ display, ...props }: any) {
       {
         Object.values(props).map((elem: any, i: number, props: any) => {
           if (typeof elem !== 'function' && typeof elem !== 'boolean' && typeof elem !== 'string')
-            if (elem.isDone && (!display || (elem.value.header !== '' && elem.value.content !== ''))) {
+            if (elem.isDone && !display) {
               return (
-                <JournalCard isDone={true} key={elem.key} header={elem.value.header} content={elem.value.content} />
+                <JournalCard
+                  isDone={true}
+                  key={elem.key}
+                  header={elem.value.header}
+                  content={elem.value.content}
+                  emotion1={elem.emotions.length >= 1 ? elem.emotions[0] : false}
+                  emotion2={elem.emotions.length === 2 ? elem.emotions[1] : false}
+                />
               )
             } else if (!display) {
               return (
@@ -36,7 +42,7 @@ function CardContainer({ display, ...props }: any) {
             }
 
         })
-        
+
       }
     </div>
   )

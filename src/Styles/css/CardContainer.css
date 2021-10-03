@@ -10,6 +10,7 @@
   width: 90vw;
   min-height: 10vh;
   margin: 20px auto 0px auto;
+  background: white;
 }
 .card__container .card__elem {
   border: 1px black solid;

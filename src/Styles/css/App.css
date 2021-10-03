@@ -6,4 +6,7 @@
 .app .app__welcome #app__current_date {
   margin: 20px auto  0px auto;
 }
+body {
+  background: #eeece7;
+}
 /*# sourceMappingURL=App.css.map */

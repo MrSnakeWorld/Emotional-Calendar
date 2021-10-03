@@ -1,28 +1,54 @@
-// const initialState = {
-//   current: 'none',
-//   value: 0,
-//   joy: {
-//     type: 'joy',
-//     active: false,
-//     opacity: 0
-//   },
-//   sadness: {
-//     type: 'sadness',
-//     active: false,
-//     opacity: 0
-//   },
-//   void: {
-//     type: 'void',
-//     active: false,
-//     opacity: 0
-//   }
-// }
-
 const initialState = {
+  returnEmotions: function (currentEmotion: string, currentOpacity: number, deleteFlag: boolean = false) {
+    return this.emotions.map((emotion: any) => {
+      if (deleteFlag) {
+        if (emotion.type === currentEmotion) {
+          return {
+            type: emotion.type,
+            emotionId: emotion.emotionId,
+            displayName: emotion.displayName,
+            active: false,
+            opacity: 0,
+            color: emotion.color
+          }
+        } else {
+          return emotion
+        }
+      } else {
+        if (emotion.type === currentEmotion) {
+          return emotion = {
+            type: emotion.type,
+            emotionId: emotion.emotionId,
+            displayName: emotion.displayName,
+            active: true,
+            opacity: currentOpacity,
+            color: emotion.color
+          }
+        } else if (emotion.active && !emotion.opacity) {
+          return emotion = {
+            type: emotion.type,
+            emotionId: emotion.emotionId,
+            displayName: emotion.displayName,
+            active: false,
+            opacity: emotion.opacity,
+            color: emotion.color
+          }
+        } else {
+          return emotion
+        }
+      }
+    })
+
+  },
   current: 'none',
   currentOpacity: 0,
+  numberOfActive: 0,
+  activeEmotions: [
+
+  ],
   emotions: [{
     type: 'joy',
+    emotionId: 0,
     displayName: 'Радость',
     active: false,
     opacity: 0,
@@ -33,6 +59,7 @@ const initialState = {
     }
   }, {
     type: 'sadness',
+    emotionId: 1,
     displayName: 'Грусть',
     active: false,
     opacity: 0,
@@ -43,6 +70,7 @@ const initialState = {
     }
   }, {
     type: 'void',
+    emotionId: 2,
     displayName: 'Пустота',
     active: false,
     opacity: 0,
@@ -59,166 +87,34 @@ export const reducerEmotions = (state: any = initialState, action: any): any => 
   switch (action.type) {
     case 'CHOOSE_EMOTION':
       return {
+        returnEmotions: state.returnEmotions,
         current: action.value.currentEmotion,
         currentOpacity: action.value.currentOpacity,
-        emotions: Object.values(state.emotions).map((emotion: any) => {
-          if (emotion.type === action.value.currentEmotion) {
-            return emotion = {
-              type: emotion.type,
-              displayName: emotion.displayName,
-              active: true,
-              opacity: action.value.currentOpacity,
-              color: emotion.color
-            }
-          }
-          return emotion
-        })
+        numberOfActive: state.emotions.filter((emotion: any) => emotion.active).length,
+        activeEmotions: [],
+        emotions: state.returnEmotions(action.value.currentEmotion, action.value.currentOpacity)
       }
     case 'CHANGE_OPACITY':
       return {
+        returnEmotions: state.returnEmotions,
         current: state.current,
-        currentOpacity: action.value.opacity,
-        emotions: Object.values(state.emotions).map((emotion: any) => {
-          if (emotion.type === action.value.currentEmotion) {
-            if (action.value.opacity === 0) {
-              return {
-                type: emotion.type,
-                displayName: emotion.displayName,
-                active: false,
-                opacity: action.value.opacity,
-                color: emotion.color
-              }
-            } else {
-              return {
-                type: emotion.type,
-                displayName: emotion.displayName,
-                active: emotion.active,
-                opacity: action.value.opacity,
-                color: emotion.color
-              }
-            }
-          }
-          return emotion
-        })
+        currentOpacity: action.value.currentOpacity,
+        numberOfActive: state.emotions.filter((emotion: any) => emotion.active).length,
+        activeEmotions: state.activeEmotions,
+        emotions: state.returnEmotions(action.value.currentEmotion, action.value.currentOpacity)
       }
     case 'CLEAR_EMOTION': {
       return {
+        returnEmotions: state.returnEmotions,
         current: 'none',
         currentOpacity: 0,
-        emotions: Object.values(state.emotions).map((emotion: any) => {
-          if (emotion.type === action.value.currentEmotion) {
-            return {
-              type: emotion.type,
-              displayName: emotion.displayName,
-              active: false,
-              opacity: 0,
-              color: emotion.color
-            }
-          }
-          return emotion
-        })
+        emotions: state.returnEmotions(action.value.currentEmotion, 0, true)
       }
     }
     case 'CLEAR_ALL_EMOTIONS': {
-      return {
-        current: 'none',
-        currentOpacity: 0,
-        emotions: Object.values(state.emotions).map((emotion: any) => {
-          return {
-            type: emotion.type,
-            displayName: emotion.displayName,
-            active: false,
-            opacity: 0,
-            color: emotion.color
-          }
-        })
-      }
+      return initialState
     }
     default:
       return state
   }
 }
-
-// export const reducerEmotions = (state: any = initialState, action: any): any => {
-//   switch (action.type) {
-//     case 'CHOOSE_EMOTION':
-
-//       console.log('state: ', state)
-//       return {
-//         current: action.emotion,
-//         value: state[`${action.emotion}`].active ? state[`${action.emotion}`].opacity : 0,
-//         [action.emotion]: {
-//           type: state[`${action.emotion}`].type,
-//           active: true,
-//           opacity: state[`${action.emotion}`].opacity
-//         },
-//         [action.emotion === 'joy' ? '_temp' : 'joy']: {
-//           type: state.joy.type,
-//           active: state.joy.opacity === 0 ? false : true,
-//           opacity: state.joy.opacity
-//         },
-//         [action.emotion === 'sadness' ? '_temp' : 'sadness']: {
-//           type: state.sadness.type,
-//           active: state.sadness.opacity === 0 ? false : true,
-//           opacity: state.sadness.opacity
-//         },
-//         [action.emotion === 'void' ? '_temp' : 'void']: {
-//           type: state.void.type,
-//           active: state.void.opacity === 0 ? false : true,
-//           opacity: state.void.opacity
-//         },
-//       }
-
-//     case 'CLEAR_EMOTION':
-//       console.log('state: ', state)
-//       return {
-//         current: 'none',
-//         value: 0,
-//         [action.emotion]: {
-//           active: false,
-//           opacity: 0
-//         },
-//         [action.emotion === 'joy' ? '_temp' : 'joy']: state.joy,
-//         [action.emotion === 'sadness' ? '_temp' : 'sadness']: state.sadness,
-//         [action.emotion === 'void' ? '_temp' : 'void']: state.void
-//       }
-
-//     case 'CLEAR_ALL_EMOTIONS':
-//       return {
-//         current: 'none',
-//         value: 0,
-//         joy: {
-//           type: 'joy',
-//           active: false,
-//           opacity: 0
-//         },
-//         sadness: {
-//           type: 'sadness',
-//           active: false,
-//           opacity: 0
-//         },
-//         void: {
-//           type: 'void',
-//           active: false,
-//           opacity: 0
-//         }
-//       }
-
-//     case 'CHANGE_OPACITY':
-//       return {
-//         current: state.current,
-//         value: action.opacity,
-//         [state.current]: {
-//           active: state[`${state.current}`].active,
-//           opacity: action.opacity
-//         },
-//         [state.current === 'joy' ? '_temp' : 'joy']: state.joy,
-//         [state.current === 'sadness' ? '_temp' : 'sadness']: state.sadness,
-//         [state.current === 'void' ? '_temp' : 'void']: state.void
-
-//       }
-
-//     default:
-//       return state
-//   }
-// }

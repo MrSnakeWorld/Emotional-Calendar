@@ -2,9 +2,7 @@ import React, { useRef } from 'react'
 import Emotion from './Emotion'
 import '../Styles/css/Emotions.css'
 import { connect, useDispatch } from 'react-redux'
-import { addEmotion, changeOpacity, clearAllEmotions, clearEmotion, closeModal } from '../Redux/Actions'
-import { typeOfEmotions } from '../Constants'
-import MiniEmotion from './MiniEmotion'
+import { addEmotion, changeOpacity, clearAllEmotions, clearCurrentEmotion, clearEmotion, closeModal } from '../Redux/Actions'
 
 const mapStateToProps = (state: any, props: any) => ({ ...props, ...state.emotions })
 function EmotionContainer(props: any) {
@@ -22,12 +20,12 @@ function EmotionContainer(props: any) {
             return (
               <Emotion
                 position={i}
-                text={props[i].displayName}
-                name={props[i].type}
+                displayName={props[i].displayName}
+                type={props[i].type}
                 R={props[i].color.redColor}
                 G={props[i].color.greenColor}
                 B={props[i].color.blueColor}
-
+                key={props[i].emotionId}
               />
             )
           })
@@ -36,13 +34,18 @@ function EmotionContainer(props: any) {
 
       <br /><input className={sliderClassName} type="range" min='0' max='1' step='0.01' ref={refValue} value={props.currentOpacity} onChange={() => {
         dispatch(changeOpacity({
-          opacity: Number(refValue.current?.value),
+          currentOpacity: Number(refValue.current?.value),
           currentEmotion: props.current
         }))
       }} /><br />
       <button className='submit' onClick={() => {
-        dispatch(closeModal())
-        dispatch(clearAllEmotions())
+        if (props.emotions.filter((emotion: any) => emotion.active).length <= 2) {
+          dispatch(addEmotion({
+            activeEmotions: props.emotions.filter((emotion: any) => emotion.active)
+          }))
+          dispatch(closeModal())
+          dispatch(clearAllEmotions())  
+        }
       }} >Подтвердить</button>
       <button className='submit' onClick={() => {
         dispatch(clearEmotion({

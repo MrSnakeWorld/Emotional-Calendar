@@ -7,7 +7,7 @@ import { reducerModal } from "../Reducers/reducerModal";
 export const rootReducer = combineReducers({
   cards: reducerCards,
   modal: reducerModal,
-  emotions: reducerEmotions
+  emotions: reducerEmotions,
 })
 
 export const store = createStore(rootReducer)
