@@ -1,161 +1,72 @@
-import React, { useCallback, useState } from 'react'
-import { LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Line } from 'recharts'
+import React from 'react'
 import CardContainer from './Components/CardContainer'
 import { windowInnerHeight, windowInnerWidth } from './Constants';
-
-const data = [
-  {
-    name: "30.08",
-    joy: 10,
-    sadness: 0,
-    anger: 0,
-    fear: 5,
-    disgust: 3,
-    surprise: 8,
-  },
-  {
-    name: "01.09",
-    joy: 5,
-    sadness: 4,
-    anger: 5,
-    fear: 3,
-    disgust: 1,
-    surprise: 3,
-  },
-  {
-    name: "02.09",
-    joy: 0,
-    sadness: 0,
-    anger: 0,
-    fear: 0,
-    disgust: 0,
-    surprise: 0,
-  },
-  {
-    name: "03.09",
-    joy: 3,
-    sadness: 1,
-    anger: 9,
-    fear: 0,
-    disgust: 0,
-    surprise: 4,
-  },
-  {
-    name: "04.08",
-    joy: 0,
-    sadness: 10,
-    anger: 9,
-    fear: 1,
-    disgust: 0,
-    surprise: 3,
-  },
-  {
-    name: "05.08",
-    joy: 0,
-    sadness: 10,
-    anger: 9,
-    fear: 1,
-    disgust: 0,
-    surprise: 3,
-  },
-  {
-    name: "06.08",
-    joy: 0,
-    sadness: 10,
-    anger: 9,
-    fear: 1,
-    disgust: 0,
-    surprise: 3,
-  }
-];
-
+import * as V from 'victory'
 
 function Analitics() {
-  const [opacity, setOpacity] = useState({
-    joy: 1,
-    sadness: 1,
-    anger: 1,
-    fear: 1,
-    disgust: 1,
-    surprise: 1
-  });
-
-  const handleMouseEnter = useCallback(
-    (o) => {
-      const { dataKey } = o;
-
-      setOpacity({ ...opacity, [dataKey]: 0.5 });
+  const data = {
+    joy: {
+      data: [
+        { x: '10.09', y: 10 },
+        { x: '11.09', y: 9 },
+        { x: '12.09', y: 3 },
+        { x: '14.09', y: 7 },
+        { x: '15.09', y: 4 },
+        { x: '16.09', y: 3 },
+      ],
+      color: {
+        redColor: 255,
+        greenColor: 0,
+        blueColor: 0
+      }
     },
-    [opacity, setOpacity]
-  );
+    sadness: {
+      data: [
+        { x: '11.09', y: 3 },
+        { x: '12.09', y: 3 },
+        { x: '13.09', y: 1 },
+        { x: '14.09', y: 5 },
+        { x: '15.09', y: 4 },
+      ],
+      color: {
+        redColor: 0,
+        greenColor: 255,
+        blueColor: 0
+      }
+    }
+  }
 
-  const handleMouseLeave = useCallback(
-    (o) => {
-      const { dataKey } = o;
-      setOpacity({ ...opacity, [dataKey]: 1 });
-    },
-    [opacity, setOpacity]
-  );
 
   return (
     <div>
-      <div style={{
-        position: 'relative',
-        right: '35px'
-      }}>
-        <LineChart
-          width={windowInnerWidth + 30}
-          height={windowInnerHeight / 1.5}
-          data={data}
-        >
-          <CartesianGrid strokeDasharray="1 1" />
-          <XAxis dataKey="name" />
-          <YAxis tickCount={11} />
-          <Tooltip />
-          <Legend
-            margin={{top: 0, left: 50, right: 0, bottom: 0}}
-            align='right'
-            width={windowInnerWidth}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
+      <div>
+        <V.VictoryChart width={400} height={400} domain={{ y: [0, 10] }} >
+          <V.VictoryAxis dependentAxis crossAxis
+            width={400}
+            height={400}
+            domain={[0, 10]}
+            tickValues={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+            offsetX={50}
+            standalone={false}
           />
-          <Line
-            type="monotone"
-            dataKey="joy"
-            strokeOpacity={opacity.joy}
-            stroke="yellow"
+          <V.VictoryAxis crossAxis
+            width={400}
+            height={400}
+            tickValues={['10.09', '11.09', '12.09', '13.09', '14.09', '15.09', '16.09']}
+            offsetY={50}
+            standalone={false}
           />
-          <Line
-            type="monotone"
-            dataKey="fear"
-            strokeOpacity={opacity.fear}
-            stroke="lightblue"
-          />
-          <Line
-            type="monotone"
-            dataKey="surprise"
-            strokeOpacity={opacity.surprise}
-            stroke="orange"
-          />
-          <Line
-            type="monotone"
-            dataKey="sadness"
-            strokeOpacity={opacity.sadness}
-            stroke="blue"
-          />
-          <Line
-            type="monotone"
-            dataKey="anger"
-            strokeOpacity={opacity.anger}
-            stroke="red"
-          />
-          <Line
-            type="monotone"
-            dataKey="disgust"
-            strokeOpacity={opacity.disgust}
-            stroke="purple"
-          />
-        </LineChart>
+          {
+            Object.values(data).map((elem: any, i: number, data: any) => {
+              const color = `RGB(${elem.color.redColor}, ${elem.color.greenColor}, ${elem.color.blueColor})`
+              return (
+                <V.VictoryLine key={i} data={elem.data} style={{ data: { stroke: color } }} />
+              )
+            })
+          }
+        </V.VictoryChart>
+
+
       </div>
       <CardContainer display='hidden' />
     </div>
