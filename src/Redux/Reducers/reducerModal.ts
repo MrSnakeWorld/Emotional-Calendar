@@ -20,7 +20,6 @@ export const reducerModal = (state: any = initialState, action: any): any => {
         }
       }
     case 'CLOSE_MODAL':
-      
       return {
         modalMenu: {
           active: false

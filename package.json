@@ -11,6 +11,8 @@
     "@types/node": "^12.20.25",
     "@types/react": "^17.0.21",
     "@types/react-dom": "^17.0.9",
+    "classnames": "^2.3.1",
+    "next": "^11.1.2",
     "react": "^17.0.2",
     "react-calendar": "^3.4.0",
     "react-dom": "^17.0.2",
@@ -24,8 +26,10 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "concurrently --kill-others \"less-watch-compiler --config less-watcher.config.json\" \"react-scripts start\"",
-    "build": "react-scripts build",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -53,9 +57,6 @@
     "@types/redux": "^3.6.0",
     "@types/redux-thunk": "^2.1.0",
     "@types/typescript": "^2.0.0",
-    "@types/victory": "^33.1.5",
-    "concurrently": "^6.2.1",
-    "less": "^4.1.1",
-    "less-watch-compiler": "^1.16.2"
+    "@types/victory": "^33.1.5"
   }
 }

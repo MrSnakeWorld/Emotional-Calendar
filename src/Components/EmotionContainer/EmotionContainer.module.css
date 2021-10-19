@@ -1,0 +1,40 @@
+.emotion__container {
+  width: 100%;
+  display: block;
+}
+.emotion__text {  
+  margin: 20px;
+}
+.emotion__group {
+  text-align: center;
+}
+.block {
+  display: flex;
+  justify-content: space-between;
+}
+._activeSlider {
+  margin: auto;
+}
+.slider {
+  margin: 25px auto 25px;
+  width: 90%;
+  box-sizing: border-box;
+  bottom: 15%;
+  left: 5%;
+  position: fixed;
+  transition: 0.4s all;
+  transform: scale(0);
+}
+.slider._active {
+  transform: scale(1);
+}
+.submit {
+  margin: 0 20px 20px 20px;
+  padding: 5px;
+}
+.miniEmotion {
+  max-width: 50px;
+  max-height: 50px;
+  border: 1px solid;
+  border-radius: 100%;
+}

@@ -1,0 +1,56 @@
+import React, { Dispatch, useRef } from 'react'
+import Calendar from 'react-calendar'
+import { useDispatch } from 'react-redux'
+import { SwipeEventListener } from 'swipe-event-listener'
+import CardContainer from '../CardContainer/CardContainer'
+import greetings, { weekDay, day, month, year, hours} from '../../Constants'
+import { closeMenu, openMenu, openModal } from '../../Redux/Actions'
+import classes from './Main.module.css'
+
+function Main() {
+  const dispatch: Dispatch<any> = useDispatch()
+  function setEventMainSwipe() {
+    const mainElem = document.querySelector('main')
+    if (mainElem !== null) {
+      const { swipeArea, updateOptions } = SwipeEventListener({
+        swipeArea: mainElem,
+      });
+      swipeArea.addEventListener('swipeRight', (e: Event) => {
+        dispatch(openMenu())
+      })
+    }
+  }
+  function setEventMenuSwipe() {
+    const menuElem = document.querySelector('menu')
+    if (menuElem !== null) {
+      const { swipeArea, updateOptions } = SwipeEventListener({
+        swipeArea: menuElem,
+      });
+      swipeArea.addEventListener('swipeLeft', (e: Event) => {
+        dispatch(closeMenu())
+      })
+    }
+  }
+  setTimeout(setEventMainSwipe, 500)
+  setTimeout(setEventMenuSwipe, 500)
+
+  return (
+    <div className={classes.app}>
+      <div className={classes.app__welcome}>
+        <p id='app__current_date'>
+          Сегодня {weekDay}<br />
+          {day} {month} {year}
+        </p>
+        <p id='app__greetings' > {greetings(hours)} </p>
+      </div>
+
+      <Calendar
+        className='calendar__body'
+        tileContent=''
+      />
+      <CardContainer />
+    </div>
+  )
+}
+
+export default (Main)

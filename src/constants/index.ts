@@ -23,11 +23,7 @@ export default function greetings(hours: number) {
   }
 }
 
-export const windowWidth: number = window.screen.width
-export const windowHeight: number = window.screen.height
 
-export const windowInnerWidth = document.documentElement.clientWidth
-export const windowInnerHeight = document.documentElement.clientHeight
 
 export const typeOfEmotions: string[] = ['joy', 'sadness', 'void']
 

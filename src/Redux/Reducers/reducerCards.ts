@@ -22,6 +22,7 @@ const firstCard = {
     }
   }]
 }
+
 const initialState = {
   fillCards(firstCard: Object, newCard: Object) {
     let cards: any[] = Object.values(this.cards).filter((card: any) => card !== firstCard)
@@ -60,7 +61,6 @@ export const reducerCards = (state: any = initialState, action: any): any => {
         currentEmotions: state.currentEmotions
       }
     case 'ADD_EMOTION':
-      console.log('action', action)
       return {
         fillCards: state.fillCards,
         cards: state.cards,

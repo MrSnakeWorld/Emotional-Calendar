@@ -1,5 +1,12 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# cache and other Next.js stuff
+/.next/cache
+/.next/server
+/.next/static
+/.next/build-manifest.json
+/.next/react-loadable-manifest.json
+
 # dependencies
 /node_modules
 /.pnp

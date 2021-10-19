@@ -1,0 +1,8 @@
+.app .app__welcome {
+  display: flex;
+  justify-content: space-between;
+}
+.app .app__welcome #app__greetings,
+.app .app__welcome #app__current_date {
+  margin: 20px auto  0px auto;
+}

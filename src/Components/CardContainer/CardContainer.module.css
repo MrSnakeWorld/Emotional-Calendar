@@ -1,0 +1,10 @@
+.card__container {
+  text-align: center;
+  border: solid 1px black;
+  border-radius: 10px;
+  width: 90vw;
+  min-height: 10vh;
+  margin: 20px auto 0px auto;
+  background: white;
+}
+
