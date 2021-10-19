@@ -18,6 +18,30 @@
   border: 1px black solid;
   border-top: none;
 }
+.block {
+  display: flex;
+  justify-content: center;
+}
+
+.buttons {
+  width: 60px;
+  height: 30px;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.buttons > button:first-of-type {
+  left: 0
+}
+
+.buttons > button:last-of-type{
+  right: 0
+}
+
 .card__elem button {
-  border-radius: 15px;
+  border-radius: 1000%;
+  height: 30px;
+  width: 30px;
+  position: absolute;
 }

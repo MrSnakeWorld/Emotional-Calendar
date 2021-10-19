@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { connect, useDispatch } from 'react-redux'
-import { addCard, clearCurrentEmotion,  openModal } from '../../Redux/Actions'
+import { addCard, clearCurrentEmotion, openModal } from '../../Redux/Actions'
 import classes from './JournalCard.module.css'
 
 const mapStateToProps = (state: any, props: any) => ({ ...props, ...state.cards })
@@ -47,9 +47,9 @@ function JournalCard({ isDone, header, content, emotion1, emotion2, ...props }: 
     )
   } else {
     const colors = returnColors(
-      [props.currentEmotions[0].color.redColor, props.currentEmotions[1].color.redColor], 
-      [props.currentEmotions[0].color.greenColor, props.currentEmotions[1].color.greenColor], 
-      [props.currentEmotions[0].color.blueColor, props.currentEmotions[1].color.blueColor], 
+      [props.currentEmotions[0].color.redColor, props.currentEmotions[1].color.redColor],
+      [props.currentEmotions[0].color.greenColor, props.currentEmotions[1].color.greenColor],
+      [props.currentEmotions[0].color.blueColor, props.currentEmotions[1].color.blueColor],
       [props.currentEmotions[0].opacity, props.currentEmotions[1].opacity]
     )
 
@@ -58,8 +58,13 @@ function JournalCard({ isDone, header, content, emotion1, emotion2, ...props }: 
         background: `linear-gradient(to top right, ${colors[0]}, ${colors[1]} )`
       }}>
         <input className={classes.card__event} type="text" placeholder='Событие' ref={refHeader} /> <br />
-        <textarea name="card__thougth" className={classes.card__thougth} cols={30} rows={10} placeholder='Ваши мысли на счет произошедшего' ref={refContent} />
-        <br /> <button onClick={btnAddCard} >✓</button> <button onClick={btnChooseEmote}>+</button>
+        <textarea name="card__thougth" className={classes.card__thougth} cols={30} rows={10} placeholder='Ваши мысли на счет произошедшего' ref={refContent} /><br />
+        <div className={classes.block}>
+          <div className={classes.buttons}>
+            <button onClick={btnAddCard} >✓</button>
+            <button onClick={btnChooseEmote}>+</button>
+          </div>
+        </div>
       </div>
     )
   }

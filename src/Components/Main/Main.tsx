@@ -3,9 +3,10 @@ import Calendar from 'react-calendar'
 import { useDispatch } from 'react-redux'
 import { SwipeEventListener } from 'swipe-event-listener'
 import CardContainer from '../CardContainer/CardContainer'
-import greetings, { weekDay, day, month, year, hours} from '../../Constants'
+import greetings, { weekDay, day, month, year, hours } from '../../Constants'
 import { closeMenu, openMenu, openModal } from '../../Redux/Actions'
 import classes from './Main.module.css'
+import MiniEmotion from '../MiniEmotion/MiniEmotion'
 
 function Main() {
   const dispatch: Dispatch<any> = useDispatch()
@@ -33,20 +34,31 @@ function Main() {
   }
   setTimeout(setEventMainSwipe, 500)
   setTimeout(setEventMenuSwipe, 500)
+  function setTileContent({ view }: any) {
+    if (view === 'month') {
+      return (
+        <MiniEmotion>1</MiniEmotion>
+      )
+    }
+    return (
+      null
+    )
+  }
 
   return (
-    <div className={classes.app}>
-      <div className={classes.app__welcome}>
-        <p id='app__current_date'>
+    <div className={classes.main}>
+      <div className={classes.main__welcome}>
+        <p className={classes.main__current_date}>
           Сегодня {weekDay}<br />
           {day} {month} {year}
         </p>
-        <p id='app__greetings' > {greetings(hours)} </p>
+        <p className={classes.main__greetings}> {greetings(hours)} </p>
       </div>
 
       <Calendar
         className='calendar__body'
-        tileContent=''
+        tileContent={setTileContent}
+        tileClassName={classes.calendarTile}
       />
       <CardContainer />
     </div>

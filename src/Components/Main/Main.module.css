@@ -1,8 +1,12 @@
-.app .app__welcome {
+.main__welcome {
   display: flex;
   justify-content: space-between;
 }
-.app .app__welcome #app__greetings,
-.app .app__welcome #app__current_date {
-  margin: 20px auto  0px auto;
+.main__current_date,
+.main__greetings {
+  margin: 0px 10px;
+}
+
+.calendarTile {
+  height: 50px;
 }
