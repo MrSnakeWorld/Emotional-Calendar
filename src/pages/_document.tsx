@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
-import {Html, Head, NextScript, Main} from 'next/document'
+import { Html, Head, NextScript, Main } from 'next/document'
 
-function Document() {
+function Document(): ReactElement {
   return (
     <Html>
       <Head>
