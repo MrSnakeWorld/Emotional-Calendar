@@ -22,13 +22,38 @@ const firstCard = {
     }
   }]
 }
+const secondCard = {
+  isDone: true,
+  id: 1,
+  key: 1,
+  value: {
+    header: 'Мне грустно',
+    content: 'Сегодня умер мой Сталин, по имени Иосиф. Я его очень любил и уважал, но он умер. Не знаю, что я буду теперь делать. Моя жизнь без сталина бессмыслена.'
+  },
+  emotions: [{
+    opacity: 0.4,
+    color: {
+      redColor: 42,
+      greenColor: 82,
+      blueColor: 190
+    }
+  }, {
+    opacity: 0.5,
+    color: {
+      redColor: 128,
+      greenColor: 0,
+      blueColor: 255
+    }
+  }]
+}
+
 
 const initialState = {
   fillCards(firstCard: Object, newCard: Object) {
     let cards: any[] = Object.values(this.cards).filter((card: any) => card !== firstCard)
     return [firstCard, newCard, ...cards]
   },
-  cards: [firstCard],
+  cards: [firstCard, secondCard],
   currentEmotions: [{
     opacity: 1,
     color: {
@@ -78,3 +103,4 @@ export const reducerCards = (state: any = initialState, action: any): any => {
       return state
   }
 }
+

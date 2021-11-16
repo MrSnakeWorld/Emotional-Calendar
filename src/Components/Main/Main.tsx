@@ -1,15 +1,31 @@
-import React, { Dispatch, useRef } from 'react'
+import React, { Dispatch } from 'react'
 import Calendar from 'react-calendar'
 import { useDispatch } from 'react-redux'
 import { SwipeEventListener } from 'swipe-event-listener'
 import CardContainer from '../CardContainer/CardContainer'
-import greetings, { weekDay, day, month, year, hours } from '../../Constants'
-import { closeMenu, openMenu, openModal } from '../../Redux/Actions'
+import greetings, { weekDay, day, month, year, hours, getRequest, url, currentUser } from '../../Constants'
+import { closeMenu, openMenu } from '../../Redux/Actions'
 import classes from './Main.module.css'
-import MiniEmotion from '../MiniEmotion/MiniEmotion'
+import MiniEmotion from '../MiniEmotionContainer/MiniEmotion/MiniEmotion'
+import MiniEmotionContainer from '../MiniEmotionContainer/MiniEmotionContainer'
+
+
 
 function Main() {
+
   const dispatch: Dispatch<any> = useDispatch()
+  const headers = {
+    TempUsername: currentUser,
+    monthNumInYear: month,
+    year: year
+  }
+  // let data
+  // getRequest(url + Calendar, headers).then((data) => {
+  //   data = data
+  // })
+  // console.log(data)
+
+
   function setEventMainSwipe() {
     const mainElem = document.querySelector('main')
     if (mainElem !== null) {
@@ -34,17 +50,7 @@ function Main() {
   }
   setTimeout(setEventMainSwipe, 500)
   setTimeout(setEventMenuSwipe, 500)
-  function setTileContent({ view }: any) {
-    if (view === 'month') {
-      return (
-        <MiniEmotion>1</MiniEmotion>
-      )
-    }
-    return (
-      null
-    )
-  }
-
+  
   return (
     <div className={classes.main}>
       <div className={classes.main__welcome}>
@@ -57,10 +63,12 @@ function Main() {
 
       <Calendar
         className='calendar__body'
-        tileContent={setTileContent}
         tileClassName={classes.calendarTile}
+        maxDetail={'month'}
+        minDetail={'year'}
       />
       <CardContainer />
+      <MiniEmotionContainer/> 
     </div>
   )
 }

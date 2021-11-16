@@ -1,0 +1,11 @@
+.container {
+  position: absolute;
+  top: 162px;
+  right: -9px;
+  width: 100vw;
+}
+.table {
+  margin: 0px auto 0px;
+  border-collapse: separate;
+  border-spacing: 12px;
+}

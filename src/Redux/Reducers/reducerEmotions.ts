@@ -1,3 +1,4 @@
+
 const initialState = {
   returnEmotions: function (currentEmotion: string, currentOpacity: number, deleteFlag: boolean = false) {
     return this.emotions.map((emotion: any) => {
@@ -53,9 +54,9 @@ const initialState = {
     active: false,
     opacity: 0,
     color: {
-      redColor: 255,
+      redColor: 0,
       greenColor: 255,
-      blueColor: 0,
+      blueColor: 127,
     }
   }, {
     type: 'sadness',
@@ -64,26 +65,58 @@ const initialState = {
     active: false,
     opacity: 0,
     color: {
-      redColor: 0,
-      greenColor: 0,
-      blueColor: 255,
+      redColor: 42,
+      greenColor: 82,
+      blueColor: 190,
     }
   }, {
-    type: 'void',
+    type: 'anger',
     emotionId: 2,
-    displayName: 'Пустота',
+    displayName: 'Злость',
     active: false,
     opacity: 0,
     color: {
-      redColor: 0,
+      redColor: 248,
+      greenColor: 23,
+      blueColor: 62
+    }
+  }, {
+    type: 'surprise',
+    emotionId: 2,
+    displayName: 'Удивление',
+    active: false,
+    opacity: 0,
+    color: {
+      redColor: 128,
       greenColor: 0,
-      blueColor: 0
+      blueColor: 255
+    }
+  }, {
+    type: 'bored',
+    emotionId: 2,
+    displayName: 'Скука',
+    active: false,
+    opacity: 0,
+    color: {
+      redColor: 83,
+      greenColor: 75,
+      blueColor: 79
+    }
+  }, {
+    type: 'fear',
+    emotionId: 2,
+    displayName: 'Страх',
+    active: false,
+    opacity: 0,
+    color: {
+      redColor: 49,
+      greenColor: 127,
+      blueColor: 67
     }
   }]
 }
 
 export const reducerEmotions = (state: any = initialState, action: any): any => {
-
   switch (action.type) {
     case 'CHOOSE_EMOTION':
       return {

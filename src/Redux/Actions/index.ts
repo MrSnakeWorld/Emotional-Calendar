@@ -1,7 +1,12 @@
 //actions for reducerCards
+const FETCH_CARD = 'FETCH_CARD'
 const ADD_CARD = 'ADD_CARD'
 const ADD_EMOTION = 'ADD_EMOTION'
 const CLEAR_CURRENT_EMOTION = 'CLEAR_CURRENT_EMOTION'
+
+export const fetchCard = () => ({
+  type: FETCH_CARD
+})
 
 export const addCard = (value: any) => ({
   type: ADD_CARD,
@@ -23,6 +28,8 @@ const CLOSE_MODAL = 'CLOSE_MODAL'
 const OPEN_MODAL = 'OPEN_MODAL' 
 const CLOSE_MENU = 'CLOSE_MENU'
 const OPEN_MENU = 'OPEN_MENU'
+const CLOSE_REG = 'CLOSE_REG'
+const OPEN_REG = 'OPEN_REG'
 
 export const closeModal = () => ({
   type: CLOSE_MODAL,
@@ -40,6 +47,13 @@ export const openMenu = () => ({
   type: OPEN_MENU,
 })
 
+export const closeReg = () => ({
+  type: CLOSE_REG,
+})
+
+export const openReg = () => ({
+  type: OPEN_REG
+})
 
 //actions for reducerEmotions
 const CHOOSE_EMOTION = 'CHOOSE_EMOTION'

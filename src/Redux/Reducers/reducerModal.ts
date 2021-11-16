@@ -4,6 +4,9 @@
   },
   sideMenu: {
     active: false
+  },
+  regMenu: {
+    active: true
   }
 }
 
@@ -17,6 +20,9 @@ export const reducerModal = (state: any = initialState, action: any): any => {
         },
         sideMenu: {
           active: state.sideMenu.active
+        },
+        regMenu: {
+          active: state.regMenu.active
         }
       }
     case 'CLOSE_MODAL':
@@ -26,6 +32,9 @@ export const reducerModal = (state: any = initialState, action: any): any => {
         },
         sideMenu: {
           active: state.sideMenu.active
+        },
+        regMenu: {
+          active: state.regMenu.active
         }
       }
     case 'OPEN_MENU':
@@ -35,6 +44,9 @@ export const reducerModal = (state: any = initialState, action: any): any => {
         },
         sideMenu: {
           active: true
+        },
+        regMenu: {
+          active: state.regMenu.active
         }
       }
     case 'CLOSE_MENU':
@@ -43,6 +55,33 @@ export const reducerModal = (state: any = initialState, action: any): any => {
           active: state.modalMenu.active
         },
         sideMenu: {
+          active: false
+        },
+        regMenu: {
+          active: state.regMenu.active
+        }
+      }
+    case 'OPEN_REG': 
+      return {
+        modalMenu: {
+          active: state.modalMenu.active
+        },
+        sideMenu: {
+          active: state.sideMenu.active
+        },
+        regMenu: {
+          active: true
+        }
+      }
+    case 'CLOSE_REG':
+      return {
+        modalMenu: {
+          active: state.modalMenu.active
+        },
+        sideMenu: {
+          active: state.sideMenu.active
+        },
+        regMenu: {
           active: false
         }
       }

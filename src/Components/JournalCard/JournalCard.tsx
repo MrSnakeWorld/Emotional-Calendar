@@ -41,8 +41,8 @@ function JournalCard({ isDone, header, content, emotion1, emotion2, ...props }: 
       <div className={classes.card__elem} style={{
         background: `linear-gradient(to top right, ${colors[0]}, ${colors[1]} )`
       }}>
-        <h2>{header}</h2>
-        <p>{content}</p>
+        <h3 className={classes.card__header}>{header}</h3>
+        <p className={classes.card__content}>{content}</p>
       </div>
     )
   } else {
@@ -55,7 +55,7 @@ function JournalCard({ isDone, header, content, emotion1, emotion2, ...props }: 
 
     return (
       <div className={classes.card__elem} style={{
-        background: `linear-gradient(to top right, ${colors[0]}, ${colors[1]} )`
+        background: `linear-gradient(to top right, ${colors[0]}, ${colors[1]})`
       }}>
         <input className={classes.card__event} type="text" placeholder='Событие' ref={refHeader} /> <br />
         <textarea name="card__thougth" className={classes.card__thougth} cols={30} rows={10} placeholder='Ваши мысли на счет произошедшего' ref={refContent} /><br />

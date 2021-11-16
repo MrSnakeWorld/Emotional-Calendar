@@ -1,6 +1,6 @@
 import React from 'react'
 import JournalCard from '../JournalCard/JournalCard'
-import { connect } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 import classes from './CardContainer.module.css'
 
 const mapStateToProps = (state: any) => ([...state.cards.cards])
@@ -17,14 +17,15 @@ function displayTitle(display: any, state: any) {
 }
 
 function CardContainer({ display, ...props }: any) {
-
+  console.log('props:', props)
   return (
     <div className={`${classes.card__container} ${classes[display]}`} >
       {displayTitle(display, Object.values(props))}
       {
-        Object.values(props).map((elem: any, i: number, props: any) => {
+        Object.values(props).map((elem: any, i: number, state: any) => {
+          console.log(state)
           if (typeof elem !== 'function' && typeof elem !== 'boolean' && typeof elem !== 'string')
-            if (elem.isDone && !display) {
+            if ((elem.isDone && !display )|| (display && i !== 0)) {
               return (
                 <JournalCard
                   isDone={true}
